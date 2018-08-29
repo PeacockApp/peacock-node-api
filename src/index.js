@@ -1,7 +1,12 @@
 import express from 'express'
 import { api } from './api'
+import { connection } from './connection'
 
 const app = express()
+
+connection().once('open', () => {
+    console.log('connected =)')    
+})
 
 app.use('/api', api)
 
